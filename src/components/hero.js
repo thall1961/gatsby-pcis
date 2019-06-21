@@ -1,52 +1,9 @@
 import React from 'react';
-import styled from 'styled-components';
 import {graphql, useStaticQuery} from 'gatsby';
 import Img from 'gatsby-image';
 import BackgroundImage from 'gatsby-background-image';
-
-const QuoteContainer = styled.div`
-    max-width: 67.666667%;
-`;
-
-const QuoteBox = styled.div`
-    position: static;
-    @media (min-width: 1600px) {
-        position: absolute;
-        top: 4rem;
-        left: -5rem;
-        width: 350px;
-    }
-    h2 {
-        font-size: 1rem;
-        padding: 0.5rem;
-        line-height: 1.5;
-        font-weight: 400;
-        &:before {
-            content: '“';
-            font-family: 'Georgia', serif;
-            font-size: 7rem;
-            position: absolute;
-            color: #2196f3;
-            top: -1px;
-            left: 5px;
-        }
-        @media (min-width: 768px) {
-            font-size: 1.5rem;
-            padding: 3rem 2rem 0.5rem 2rem;
-            line-height: 1.5;
-            font-weight: 400;
-        }
-        @media (min-width: 1600px) {
-            padding: 3rem 2rem 0.5rem 2rem;
-            line-height: 1.5;
-            font-weight: 400;
-        }
-    }
-    p {
-        padding: 0rem 2rem 0.5rem 2rem;
-        font-weight: 300;
-    }
-`;
+import {fluidImage} from '../helpers/imageHelper';
+import {QuoteContainer, QuoteBox} from './component-styles/quoteStyles';
 
 const hero = () => {
     const data = useStaticQuery(graphql`
@@ -59,7 +16,7 @@ const hero = () => {
             }
             galen: file(relativePath: {eq: "galen.png"}) {
                 sharp: childImageSharp {
-                    fixed(width: 200) {
+                    fixed(width: 160) {
                         ...GatsbyImageSharpFixed_withWebp
                     }
                 }
@@ -73,8 +30,7 @@ const hero = () => {
                 width: '100%',
                 backgroundSize: '100%',
                 backgroundRepeat: 'no-repeat',
-                overflowX: 'hidden',
-                minHeight: '800px'
+                overflowX: 'hidden'
             }}
         >
             <div className="row justify-content-center my-5 py-5">
@@ -110,15 +66,5 @@ const hero = () => {
         </BackgroundImage>
     );
 };
-
-export const fluidImage = graphql`
-    fragment fluidImage on File {
-        sharp: childImageSharp {
-            fluid {
-                ...GatsbyImageSharpFluid_withWebp
-            }
-        }
-    }
-`;
 
 export default hero;
