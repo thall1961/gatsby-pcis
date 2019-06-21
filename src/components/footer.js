@@ -2,7 +2,6 @@ import React from 'react';
 import styled from 'styled-components';
 import {Link, useStaticQuery, graphql} from 'gatsby';
 import Img from 'gatsby-image';
-import {fluidImage} from '../helpers/imageHelper';
 
 const CenterRight = styled.div`
     text-align: center !important;
@@ -24,19 +23,31 @@ const footer = () => {
     const data = useStaticQuery(graphql`
         query {
             onc: file(relativePath: {regex: "/ONC Certified 2015 Seal.png/"}) {
-                ...fluidImage
+                sharp: childImageSharp {
+                    fluid {
+                        ...GatsbyImageSharpFluid
+                    }
+                }
             }
             mgma: file(
                 relativePath: {
                     regex: "/MGMA Corporate Member Logo - lores.png/"
                 }
             ) {
-                ...fluidImage
+                sharp: childImageSharp {
+                    fluid {
+                        ...GatsbyImageSharpFluid
+                    }
+                }
             }
             sure: file(
                 relativePath: {regex: "/SureScripts Provider Seal.png/"}
             ) {
-                ...fluidImage
+                sharp: childImageSharp {
+                    fluid {
+                        ...GatsbyImageSharpFluid
+                    }
+                }
             }
             logo: file(relativePath: {eq: "pcis-logo.png"}) {
                 sharp: childImageSharp {

@@ -2,6 +2,8 @@ import styled from 'styled-components';
 
 export const QuoteContainer = styled.div`
     max-width: 67.666667%;
+    margin: 0 auto;
+    position: relative;
 `;
 
 export const QuoteBox = styled.div`

@@ -2,17 +2,24 @@ import React from 'react';
 import {graphql, useStaticQuery} from 'gatsby';
 import Img from 'gatsby-image';
 import BackgroundImage from 'gatsby-background-image';
-import {fluidImage} from '../helpers/imageHelper';
 import {QuoteContainer, QuoteBox} from './component-styles/quoteStyles';
 
 const hero = () => {
     const data = useStaticQuery(graphql`
         query {
             bkg: file(relativePath: {eq: "blobs.png"}) {
-                ...fluidImage
+                sharp: childImageSharp {
+                    fluid {
+                        ...GatsbyImageSharpFluid
+                    }
+                }
             }
             cook: file(relativePath: {eq: "thomascook.png"}) {
-                ...fluidImage
+                sharp: childImageSharp {
+                    fluid {
+                        ...GatsbyImageSharpFluid
+                    }
+                }
             }
             galen: file(relativePath: {eq: "galen.png"}) {
                 sharp: childImageSharp {

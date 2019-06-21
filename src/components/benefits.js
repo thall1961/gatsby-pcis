@@ -2,7 +2,6 @@ import React from 'react';
 import {useStaticQuery, graphql} from 'gatsby';
 import Img from 'gatsby-image';
 import LearnMore from './ctas/learnMore';
-import fluidImage from '../helpers/imageHelper';
 
 const benefits = () => {
     const data = useStaticQuery(graphql`
@@ -12,13 +11,25 @@ const benefits = () => {
                     regex: "/DG_CertBadge_ONCHealthIT_2015_Large.png/"
                 }
             ) {
-                ...fluidImage
+                sharp: childImageSharp {
+                    fluid {
+                        ...GatsbyImageSharpFluid
+                    }
+                }
             }
             cap: file(relativePath: {eq: "capterra-round.png"}) {
-                ...fluidImage
+                sharp: childImageSharp {
+                    fluid {
+                        ...GatsbyImageSharpFluid
+                    }
+                }
             }
             screens: file(relativePath: {eq: "screens.png"}) {
-                ...fluidImage
+                sharp: childImageSharp {
+                    fluid {
+                        ...GatsbyImageSharpFluid
+                    }
+                }
             }
         }
     `);

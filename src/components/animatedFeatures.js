@@ -2,7 +2,6 @@ import React from 'react';
 import {useStaticQuery, graphql} from 'gatsby';
 import styled, {keyframes} from 'styled-components';
 import Img from 'gatsby-image';
-import fluidImage from '../helpers/imageHelper';
 
 const rotating = keyframes`
     from {transform: rotate(0deg);}
@@ -45,7 +44,11 @@ const animatedFeatures = () => {
     const data = useStaticQuery(graphql`
         query {
             file(relativePath: {eq: "blue-logo.png"}) {
-                ...fluidImage
+                sharp: childImageSharp {
+                    fluid {
+                        ...GatsbyImageSharpFluid
+                    }
+                }
             }
         }
     `);
