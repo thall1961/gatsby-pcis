@@ -1,11 +1,15 @@
-/**
- * Configure your Gatsby site with this file.
- *
- * See: https://www.gatsbyjs.org/docs/gatsby-config/
- */
+require('dotenv').config();
 
 module.exports = {
     plugins: [
+        {
+            resolve: `gatsby-source-prismic`,
+            options: {
+                repositoryName: `pcis`,
+                accessToken: `MC5YUkRkZUJFQUFCd2plU052.M--_vWgMHU7vv73vv70t77-9BXE777-977-9Ku-_vX1s77-977-977-977-977-9ejbvv73vv73vv73vv70waw`,
+                linkResolver: ({node, key, value}) => post => `/${post.uid}`
+            }
+        },
         {
             resolve: `gatsby-source-filesystem`,
             options: {

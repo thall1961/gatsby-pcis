@@ -1,5 +1,5 @@
 import React from 'react';
-import {graphql, useStaticQuery} from 'gatsby';
+import {Link, graphql, useStaticQuery} from 'gatsby';
 import Img from 'gatsby-image';
 import BackgroundImage from 'gatsby-background-image';
 import {QuoteContainer, QuoteBox} from './component-styles/quoteStyles';
@@ -28,8 +28,26 @@ const hero = () => {
                     }
                 }
             }
+            allPrismicHomeHeader {
+                edges {
+                    node {
+                        data {
+                            hero_header {
+                                text
+                            }
+                            home_hero_primary_cta {
+                                url
+                            }
+                            home_hero_secondary_cta {
+                                url
+                            }
+                        }
+                    }
+                }
+            }
         }
     `);
+    console.log(data);
     return (
         <BackgroundImage
             fluid={data.bkg.sharp.fluid}
@@ -43,15 +61,31 @@ const hero = () => {
             <div className="row justify-content-center my-5 py-5">
                 <div className="col-12 col-md-6">
                     <h1 className="font-weight-light text-center">
-                        PCIS GOLD is a managed EHR software built for
-                        independent medical groups.
+                        {
+                            data.allPrismicHomeHeader.edges[1].node.data
+                                .hero_header.text
+                        }
                     </h1>
                     <div className="mt-5 text-center">
-                        <button className="btn btn-primary btn-lg">
+                        <Link
+                            to={
+                                data.allPrismicHomeHeader.edges[1].node.data
+                                    .home_hero_primary_cta.url
+                            }
+                            className="btn btn-primary btn-lg"
+                        >
                             Schedule a Demo
-                        </button>
+                        </Link>
                         <br className="d-block d-lg-none" />
-                        <span className="ml-3">Talk with a sales rep</span>
+                        <Link
+                            to={
+                                data.allPrismicHomeHeader.edges[1].node.data
+                                    .home_hero_secondary_cta.url
+                            }
+                            className="text-secondary ml-3"
+                        >
+                            Talk with a sales rep
+                        </Link>
                     </div>
                     <QuoteContainer className="mx-auto position-relative pt-4">
                         <Img fluid={data.cook.sharp.fluid} alt="" />
