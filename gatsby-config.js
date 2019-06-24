@@ -6,7 +6,7 @@ module.exports = {
             resolve: `gatsby-source-prismic`,
             options: {
                 repositoryName: `pcis`,
-                accessToken: `MC5YUkRkZUJFQUFCd2plU052.M--_vWgMHU7vv73vv70t77-9BXE777-977-9Ku-_vX1s77-977-977-977-977-9ejbvv73vv73vv73vv70waw`,
+                accessToken: `${process.env.API_KEY}`,
                 linkResolver: ({node, key, value}) => post => `/${post.uid}`
             }
         },
@@ -80,9 +80,30 @@ module.exports = {
         },
         `gatsby-plugin-offline`,
         {
-            resolve: `gatsby-plugin-google-analytics`,
+            resolve: `gatsby-plugin-google-gtag`,
             options: {
-                trackingId: 'UA-113002810-3'
+                // You can add multiple tracking ids and a pageview event will be fired for all of them.
+                trackingIds: [
+                    'UA-113002810-3' // Google Analytics / GA
+                    // 'AW-CONVERSION_ID' // Google Ads / Adwords / AW
+                    // 'DC-FLOODIGHT_ID' // Marketing Platform advertising products (Display & Video 360, Search Ads 360, and Campaign Manager)
+                ],
+                // This object gets passed directly to the gtag config command
+                // This config will be shared accross all trackingIds
+                // gtagConfig: {
+                //     optimize_id: 'OPT_CONTAINER_ID',
+                //     anonymize_ip: true,
+                //     cookie_expires: 0
+                // },
+                // This object is used for configuration specific to this plugin
+                pluginConfig: {
+                    // Puts tracking script in the head instead of the body
+                    head: false,
+                    // Setting this parameter is also optional
+                    respectDNT: true,
+                    // Avoids sending pageview hits from custom paths
+                    exclude: ['/preview/**', '/do-not-track/me/too/']
+                }
             }
         }
     ]
