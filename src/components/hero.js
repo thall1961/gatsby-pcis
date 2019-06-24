@@ -62,14 +62,14 @@ const hero = () => {
                 <div className="col-12 col-md-6">
                     <h1 className="font-weight-light text-center">
                         {
-                            data.allPrismicHomeHeader.edges[1].node.data
+                            data.allPrismicHomeHeader.edges[0].node.data
                                 .hero_header.text
                         }
                     </h1>
                     <div className="mt-5 text-center">
                         <Link
                             to={
-                                data.allPrismicHomeHeader.edges[1].node.data
+                                data.allPrismicHomeHeader.edges[0].node.data
                                     .home_hero_primary_cta.url
                             }
                             className="btn btn-primary btn-lg"
@@ -79,7 +79,7 @@ const hero = () => {
                         <br className="d-block d-lg-none" />
                         <Link
                             to={
-                                data.allPrismicHomeHeader.edges[1].node.data
+                                data.allPrismicHomeHeader.edges[0].node.data
                                     .home_hero_secondary_cta.url
                             }
                             className="text-secondary ml-3"
