@@ -31,7 +31,7 @@
         "gatsby-plugin-sharp": "^2.1.5",
         "gatsby-plugin-styled-components": "^3.0.7",
         "gatsby-source-filesystem": "^2.0.39",
-        "gatsby-source-prismic": "^2.3.0-alpha.3",
+        "gatsby-source-sanity": "^5.0.1",
         "gatsby-transformer-sharp": "^2.1.21",
         "intersection-observer": "^0.7.0",
         "node-sass": "^4.12.0",

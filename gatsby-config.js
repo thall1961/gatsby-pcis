@@ -34,6 +34,16 @@ module.exports = {
             }
         },
         {
+            resolve: 'gatsby-source-sanity',
+            options: {
+                projectId: '2bek7rwq',
+                dataset: 'production'
+                // a token with read permissions is required
+                // if you have a private dataset
+                // token: process.env.SANITY_READ_TOKEN
+            }
+        },
+        {
             resolve: `gatsby-plugin-purgecss`,
             options: {
                 printRejected: true // Print removed selectors and processed file names

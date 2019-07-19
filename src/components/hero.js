@@ -28,6 +28,15 @@ const hero = () => {
                     }
                 }
             }
+            allSanityHero {
+                edges {
+                    node {
+                        hero_heading
+                        hero_cta
+                        hero_cta_link
+                    }
+                }
+            }
         }
     `);
     console.log(data);
@@ -44,11 +53,14 @@ const hero = () => {
             <div className="row justify-content-center my-5 py-5">
                 <div className="col-12 col-md-6">
                     <h1 className="font-weight-light text-center">
-                        Sample Headline
+                        {data.allSanityHero.edges[0].node.hero_heading}
                     </h1>
                     <div className="mt-5 text-center">
-                        <Link to="/" className="btn btn-primary btn-lg">
-                            Schedule a Demo
+                        <Link
+                            to={data.allSanityHero.edges[0].node.hero_cta_link}
+                            className="btn btn-primary btn-lg"
+                        >
+                            {data.allSanityHero.edges[0].node.hero_cta}
                         </Link>
                         <br className="d-block d-lg-none" />
                         <Link to="/" className="text-secondary ml-3">

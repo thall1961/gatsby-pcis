@@ -12,12 +12,9 @@ function Newsletter(props) {
 
     useEffect(() => {
         if (cookies.pcisnewslettersubscribed) {
-            // if there's a cookie, that means they already
-            // signed up, so we'll set subscribed and the
-            // message
+            // cookie? they done this before
             setSubscribed(true);
-            // only if message hasn't already been set by the
-            // handleSubmit function
+            // if error, message get's filled in handleSubmit, don't overwrite
             if (message === '') {
                 setMessage('Thank you for subscribing!');
             }
@@ -28,9 +25,7 @@ function Newsletter(props) {
         e.preventDefault();
         // send to mailchimp
         const data = await addToMailchimp(email);
-        // if it worked, we'll set subscribed, the message to the user
-        // and the cookie.  If not, we'll just set the error message to
-        // show the user what happened
+        // on success, set subscribed, message, & cookie
         if (data.result === 'success') {
             setSubscribed(true);
             setMessage(data.msg);
@@ -38,6 +33,7 @@ function Newsletter(props) {
             const date = new Date(`December 31, ${nextYear} 23:59:59`);
             setCookie('pcisnewslettersubscribed', true, {expires: date});
         } else {
+            // if not, set errorMessage
             const message = data.msg.includes('already subscribed')
                 ? 'You have already subscribed with that email address.'
                 : data.msg;
