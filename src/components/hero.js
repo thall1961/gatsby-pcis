@@ -28,23 +28,6 @@ const hero = () => {
                     }
                 }
             }
-            allPrismicHomeHeader {
-                edges {
-                    node {
-                        data {
-                            hero_header {
-                                text
-                            }
-                            home_hero_primary_cta {
-                                url
-                            }
-                            home_hero_secondary_cta {
-                                url
-                            }
-                        }
-                    }
-                }
-            }
         }
     `);
     console.log(data);
@@ -61,29 +44,14 @@ const hero = () => {
             <div className="row justify-content-center my-5 py-5">
                 <div className="col-12 col-md-6">
                     <h1 className="font-weight-light text-center">
-                        {
-                            data.allPrismicHomeHeader.edges[0].node.data
-                                .hero_header.text
-                        }
+                        Sample Headline
                     </h1>
                     <div className="mt-5 text-center">
-                        <Link
-                            to={
-                                data.allPrismicHomeHeader.edges[0].node.data
-                                    .home_hero_primary_cta.url
-                            }
-                            className="btn btn-primary btn-lg"
-                        >
+                        <Link to="/" className="btn btn-primary btn-lg">
                             Schedule a Demo
                         </Link>
                         <br className="d-block d-lg-none" />
-                        <Link
-                            to={
-                                data.allPrismicHomeHeader.edges[0].node.data
-                                    .home_hero_secondary_cta.url
-                            }
-                            className="text-secondary ml-3"
-                        >
+                        <Link to="/" className="text-secondary ml-3">
                             Talk with a sales rep
                         </Link>
                     </div>

@@ -3,14 +3,6 @@ require('dotenv').config({path: `.env.${process.env.NODE_ENV}`});
 module.exports = {
     plugins: [
         {
-            resolve: `gatsby-source-prismic`,
-            options: {
-                repositoryName: `pcis`,
-                accessToken: `${process.env.API_KEY}`,
-                linkResolver: ({node, key, value}) => post => `/${post.uid}`
-            }
-        },
-        {
             resolve: `gatsby-source-filesystem`,
             options: {
                 name: `img`,
@@ -25,6 +17,13 @@ module.exports = {
                 trackingCode: '4270513',
                 // Setting this parameter is optional
                 respectDNT: true
+            }
+        },
+        {
+            resolve: 'gatsby-plugin-mailchimp',
+            options: {
+                endpoint:
+                    'https://pcisgold.us3.list-manage.com/subscribe/post?u=5181f99f33832e676d6c87014&amp;id=0de193c85a' // add your MC list endpoint here; see instructions below
             }
         },
         `gatsby-plugin-styled-components`,

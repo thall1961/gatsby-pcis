@@ -3,13 +3,19 @@ import Header from '../components/header';
 import Hero from '../components/hero';
 import Capterra from '../components/capterra';
 import Card from '../components/card';
-import Newsletter from '../components/newsletter';
 import Footer from '../components/footer';
 import '../styles/index.scss';
 
 export default () => (
     <div>
         <Header />
+        <div className="row justify-content-center">
+            <div className="col-md-8 mx-auto text-center">
+                <p className="display-4 text-center">
+                    That's not a page. But scroll down for more info.
+                </p>
+            </div>
+        </div>
         <Hero />
         <div className="my-5">
             <Capterra />
@@ -37,9 +43,6 @@ export default () => (
                     />
                 </div>
             </div>
-        </div>
-        <div className="my-5">
-            <Newsletter bg="dark" />
         </div>
         <div className="my-5">
             <Footer />
