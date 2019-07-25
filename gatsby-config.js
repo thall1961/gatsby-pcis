@@ -19,13 +19,6 @@ module.exports = {
                 respectDNT: true
             }
         },
-        {
-            resolve: 'gatsby-plugin-mailchimp',
-            options: {
-                endpoint:
-                    'https://pcisgold.us3.list-manage.com/subscribe/post?u=5181f99f33832e676d6c87014&amp;id=0de193c85a' // add your MC list endpoint here; see instructions below
-            }
-        },
         `gatsby-plugin-styled-components`,
         {
             resolve: `gatsby-plugin-sass`,
